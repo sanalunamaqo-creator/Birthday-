@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For my babyy 💖</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: white;
+      overflow: hidden;
+    }
+
+    .box {
+      margin-top: 100px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 20px;
+      border: none;
+      background: #ff6b81;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎶 Musik -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🐻 GIF lucu -->
+<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" 
+     style="width:120px; position:fixed; top:10px; left:10px;">
+
+<img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" 
+     style="width:120px; position:fixed; bottom:10px; right:10px;">
+
+<div class="box" id="page1">
+  <h2>Masukin kode dulu ayangg 😳💖</h2>
+  <input type="password" id="pass">
+  <br><br>
+  <button onclick="checkPass()">Masuk</button>
+  <p id="error"></p>
+</div>
+
+<div class="box" id="page2" style="display:none;">
+  <h2>Mau lanjut buka nggak? 😆</h2>
+  <button onclick="no()">Nggak 😢</button>
+  <button onclick="yes()">Buka 💖</button>
+</div>
+
+<div class="box" id="noPage" style="display:none;">
+  <h2>Yahh ayangg jahat 😭💔</h2>
+  <p>Aku sedih tauu... padahal udah siapin sesuatu 🥺</p>
+</div>
+
+<div class="box" id="yesPage" style="display:none;">
+  <h2>Yeyy ayangg buka 😆💖</h2>
+  <p>Aku punya sesuatu buat kamu...</p>
+  <button onclick="next()">Next ➡️</button>
+</div>
+
+<div class="box" id="final" style="display:none;">
+  <h1>Happy Birthday sayangkuu🎂💖</h1>
+
+  <br>
+  <!-- 💕 GIF tengah -->
+  <img src="https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif" width="200">
+
+  <p>
+    <br>
+    Happy birthday ayangg 😳💞<br><br>
+    Makasih ya udah hadir di hidup aku 🥺<br>
+    Kamu tuh selalu bikin aku senyum tiap hari 😆💖<br><br>
+    Semoga kamu selalu sehat, bahagia,<br>
+    dan semua impian kamu tercapai yaa ✨<br><br>
+    Aku harap kita bisa terus bareng 💕<br><br>
+    I love youu ayangg 🤍
+  </p>
+</div>
+
+<script>
+function checkPass() {
+  var p = document.getElementById("pass").value;
+  if (p === "0802") {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+  } else {
+    document.getElementById("error").innerHTML = "Salah ayangg 😭 coba lagi";
+  }
+}
+
+function no() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("noPage").style.display = "block";
+}
+
+function yes() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("yesPage").style.display = "block";
+}
+
+function next() {
+  document.getElementById("yesPage").style.display = "none";
+  document.getElementById("final").style.display = "block";
+}
+
+// 💖 animasi hati jatuh
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "💖";
+  heart.style.position = "fixed";
+  heart.style.top = "-10px";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.fontSize = "20px";
+  heart.style.animation = "fall 5s linear";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
