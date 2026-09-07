@@ -7,6 +7,7 @@
 <title>Math Challenge 🧮💜</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -14,107 +15,151 @@
 body {
   margin: 0;
   min-height: 100vh;
+
   font-family: "Trebuchet MS", Arial, sans-serif;
+
   background: #f4efff;
+
   color: #4b4263;
-  overflow: hidden;
+
+  overflow-x: hidden;
 }
 
-/* =========================
-   BACKGROUND MATEMATIKA
-========================= */
+
+/* =================================
+   BACKGROUND ANGKA & SIMBOL JATUH
+================================= */
 
 .math-bg {
   position: fixed;
+
   inset: 0;
+
   overflow: hidden;
+
   z-index: 0;
+
   pointer-events: none;
 }
 
-.symbol {
+.falling {
   position: absolute;
-  color: rgba(112, 89, 160, 0.18);
+
+  top: -100px;
+
+  color: rgba(112, 89, 160, 0.22);
+
   font-weight: bold;
-  animation: float 8s infinite ease-in-out;
+
+  animation: fall linear infinite;
 }
 
-@keyframes float {
+
+/* ANIMASI JATUH */
+
+@keyframes fall {
+
   0% {
-    transform: translateY(20px) rotate(0deg);
+    transform: translateY(-120px) rotate(0deg);
+    opacity: 0;
   }
 
-  50% {
-    transform: translateY(-30px) rotate(8deg);
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(20px) rotate(0deg);
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
   }
+
 }
 
-/* =========================
-   KOTAK UTAMA
-========================= */
+
+/* =================================
+   CONTAINER
+================================= */
 
 .container {
+
   position: relative;
+
   z-index: 2;
 
   width: 90%;
+
   max-width: 500px;
 
-  margin: auto;
+  margin: 30px auto;
+
   padding: 30px 25px;
 
-  top: 50%;
-  transform: translateY(-50%);
-
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.95);
 
   border-radius: 30px;
 
   box-shadow:
-    0 15px 40px rgba(80,60,120,0.18);
+  0 15px 40px rgba(80,60,120,0.18);
 
   text-align: center;
 }
 
-/* =========================
+
+/* =================================
    TEXT
-========================= */
+================================= */
 
 h1 {
+
   color: #7259a8;
+
   margin-bottom: 10px;
+
+  font-size: 32px;
+
 }
 
 h2 {
+
   color: #6a578f;
+
 }
 
 .subtitle {
-  font-size: 15px;
+
+  font-size: 16px;
+
   line-height: 1.6;
+
 }
 
-/* =========================
+
+/* =================================
    SOAL
-========================= */
+================================= */
 
 .question {
-  font-size: 28px;
+
+  font-size: 30px;
+
   font-weight: bold;
 
-  margin: 25px 0;
+  margin: 30px 0;
 
   color: #594678;
+
 }
 
-input {
-  width: 80%;
 
-  padding: 13px;
+input {
+
+  width: 85%;
+
+  padding: 14px;
 
   border: 2px solid #d7c8f2;
 
@@ -125,14 +170,28 @@ input {
   font-size: 20px;
 
   outline: none;
+
 }
 
+
+input:focus {
+
+  border-color: #9476c7;
+
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
 button {
+
   border: none;
 
-  padding: 13px 25px;
+  padding: 14px 28px;
 
-  margin-top: 15px;
+  margin-top: 18px;
 
   border-radius: 20px;
 
@@ -140,324 +199,530 @@ button {
 
   color: white;
 
-  font-size: 16px;
+  font-size: 17px;
 
   cursor: pointer;
 
   transition: 0.2s;
+
 }
+
 
 button:hover {
+
   transform: scale(1.05);
+
 }
+
 
 .message {
-  min-height: 30px;
 
-  margin-top: 15px;
+  min-height: 35px;
+
+  margin-top: 18px;
 
   font-weight: bold;
+
+  line-height: 1.5;
+
 }
 
-/* =========================
+
+/* =================================
    PROGRESS
-========================= */
+================================= */
 
 .progress {
+
   font-size: 14px;
 
   color: #9a88b9;
 
   margin-top: 20px;
+
 }
 
-/* =========================
-   KEJUTAN
-========================= */
 
-#surprise {
+/* =================================
+   SURPRISE
+================================= */
+
+#surprise,
+#birthday {
+
   display: none;
+
 }
+
 
 .gift {
-  font-size: 70px;
+
+  font-size: 75px;
 
   animation: bounce 1.2s infinite;
+
 }
+
 
 @keyframes bounce {
 
-  0%,100% {
+  0%, 100% {
+
     transform: translateY(0);
+
   }
 
   50% {
+
     transform: translateY(-15px);
+
   }
 
 }
 
+
 .final-text {
+
   line-height: 1.8;
-  font-size: 16px;
+
+  font-size: 17px;
+
 }
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 500px) {
+
+  .container {
+
+    margin: 25px auto;
+
+    padding: 28px 20px;
+
+  }
+
+  h1 {
+
+    font-size: 28px;
+
+  }
+
+  .question {
+
+    font-size: 26px;
+
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- BACKGROUND SIMBOL MATEMATIKA -->
+
+<!-- =================================
+     BACKGROUND ANGKA JATUH
+================================= -->
 
 <div class="math-bg">
 
-<span class="symbol" style="left:5%;top:10%;font-size:35px;">∑</span>
-<span class="symbol" style="left:20%;top:25%;font-size:25px;">π</span>
-<span class="symbol" style="left:80%;top:12%;font-size:40px;">√</span>
-<span class="symbol" style="left:70%;top:35%;font-size:28px;">∞</span>
-<span class="symbol" style="left:10%;top:65%;font-size:30px;">∫</span>
-<span class="symbol" style="left:85%;top:70%;font-size:35px;">Δ</span>
-<span class="symbol" style="left:45%;top:8%;font-size:25px;">x²</span>
-<span class="symbol" style="left:55%;top:80%;font-size:30px;">θ</span>
-<span class="symbol" style="left:30%;top:85%;font-size:25px;">÷</span>
-<span class="symbol" style="left:92%;top:50%;font-size:25px;">×</span>
-<span class="symbol" style="left:3%;top:45%;font-size:25px;">=</span>
-<span class="symbol" style="left:65%;top:90%;font-size:25px;">f(x)</span>
+  <span class="falling"
+  style="left:3%; font-size:35px; animation-duration:6s; animation-delay:0s;">
+  1
+  </span>
+
+  <span class="falling"
+  style="left:12%; font-size:28px; animation-duration:8s; animation-delay:2s;">
+  ∑
+  </span>
+
+  <span class="falling"
+  style="left:22%; font-size:32px; animation-duration:7s; animation-delay:1s;">
+  7
+  </span>
+
+  <span class="falling"
+  style="left:32%; font-size:25px; animation-duration:9s; animation-delay:4s;">
+  π
+  </span>
+
+  <span class="falling"
+  style="left:42%; font-size:38px; animation-duration:6.5s; animation-delay:1s;">
+  √
+  </span>
+
+  <span class="falling"
+  style="left:52%; font-size:30px; animation-duration:8s; animation-delay:3s;">
+  2
+  </span>
+
+  <span class="falling"
+  style="left:62%; font-size:35px; animation-duration:7s; animation-delay:0s;">
+  ×
+  </span>
+
+  <span class="falling"
+  style="left:72%; font-size:27px; animation-duration:9s; animation-delay:2s;">
+  ∞
+  </span>
+
+  <span class="falling"
+  style="left:82%; font-size:35px; animation-duration:6s; animation-delay:4s;">
+  9
+  </span>
+
+  <span class="falling"
+  style="left:92%; font-size:28px; animation-duration:8s; animation-delay:1s;">
+  ÷
+  </span>
+
+
+  <span class="falling"
+  style="left:8%; font-size:25px; animation-duration:7s; animation-delay:5s;">
+  3
+  </span>
+
+  <span class="falling"
+  style="left:27%; font-size:35px; animation-duration:8s; animation-delay:6s;">
+  +
+  </span>
+
+  <span class="falling"
+  style="left:48%; font-size:28px; animation-duration:7s; animation-delay:5s;">
+  5
+  </span>
+
+  <span class="falling"
+  style="left:68%; font-size:32px; animation-duration:9s; animation-delay:6s;">
+  =
+  </span>
+
+  <span class="falling"
+  style="left:88%; font-size:30px; animation-duration:7s; animation-delay:5s;">
+  x²
+  </span>
 
 </div>
 
 
-<!-- =========================
+<!-- =================================
      MATH CHALLENGE
-========================= -->
+================================= -->
 
 <div class="container" id="game">
 
-<h1>🧮 Math Challenge 💜</h1>
+  <h1>
+    🧮 Math Challenge 💜
+  </h1>
 
-<p class="subtitle">
+  <p class="subtitle">
 
-Sebelum kamu mendapatkan kejutan... 👀
+    Sebelum kamu mendapatkan kejutan... 👀
 
-<br>
+    <br><br>
 
-buktikan dulu kalau kamu
+    buktikan dulu kalau kamu
 
-<br>
+    <br>
 
-<strong>anak matematika sejati 😏</strong>
+    <strong>
+      anak matematika sejati 😏
+    </strong>
 
-</p>
+  </p>
 
-<div class="question" id="question">
-8 × 7 + 12 = ?
+
+  <div class="question" id="question">
+
+    8 × 7 + 12 = ?
+
+  </div>
+
+
+  <input
+    type="number"
+    id="answer"
+    placeholder="Jawaban kamu..."
+  >
+
+
+  <br>
+
+
+  <button onclick="checkAnswer()">
+
+    SUBMIT ✨
+
+  </button>
+
+
+  <div
+    class="message"
+    id="message">
+  </div>
+
+
+  <div
+    class="progress"
+    id="progress">
+
+    Soal 1 dari 3
+
+  </div>
+
 </div>
 
-<input
-type="number"
-id="answer"
-placeholder="Jawaban kamu..."
->
 
-<br>
-
-<button onclick="checkAnswer()">
-SUBMIT ✨
-</button>
-
-<div class="message" id="message"></div>
-
-<div class="progress" id="progress">
-Soal 1 dari 3
-</div>
-
-</div>
-
-
-<!-- =========================
+<!-- =================================
      SURPRISE
-========================= -->
+================================= -->
 
 <div class="container" id="surprise">
 
-<div class="gift">
-🎁
+  <div class="gift">
+
+    🎁
+
+  </div>
+
+
+  <h1>
+
+    YEAYYY!! 🎉
+
+  </h1>
+
+
+  <h2>
+
+    KAMU LULUS MATH CHALLENGE 🧮
+
+  </h2>
+
+
+  <p class="final-text">
+
+    Ternyata otak matematika kamu masih
+    berfungsi dengan baik yaa 🤣💜
+
+    <br><br>
+
+    Karena kamu berhasil menjawab semuanya...
+
+    <br><br>
+
+    sekarang kamu berhak mendapatkan sesuatu 🎁✨
+
+  </p>
+
+
+  <button onclick="openGift()">
+
+    BUKA KEJUTANNYA 💜
+
+  </button>
+
 </div>
 
-<h1>
-YEAYYY!! 🎉
-</h1>
 
-<h2>
-KAMU LULUS MATH CHALLENGE 🧮
-</h2>
-
-<p class="final-text">
-
-Ternyata otak matematika kamu masih berfungsi dengan baik yaa 🤣💜
-
-<br><br>
-
-Karena kamu berhasil menjawab semuanya...
-
-<br>
-
-sekarang kamu berhak mendapatkan sesuatu 🎁✨
-
-</p>
-
-<button onclick="openGift()">
-BUKA KEJUTANNYA 💜
-</button>
-
-</div>
-
-
-<!-- =========================
-     UCAPAN
-========================= -->
+<!-- =================================
+     HAPPY BIRTHDAY
+================================= -->
 
 <div class="container" id="birthday">
 
-<h1>
-🎉 Happy Birthday! 🎂
-</h1>
+  <h1>
 
-<p class="final-text">
+    🎉 Happy Birthday! 🎂
 
-Selamat ulang tahun, sahabatkuuu 💜
+  </h1>
 
-<br><br>
 
-Semoga di umur yang baru ini
-kamu selalu dikelilingi hal-hal baik,
-orang-orang baik,
-dan tentunya rezeki yang baik juga ✨
+  <p class="final-text">
 
-<br><br>
+    Selamat ulang tahun, sahabatkuuu 💜
 
-Semoga semua cita-cita kamu,
-termasuk yang berhubungan dengan
-angka, rumus, dan segala macam
-per-matematika-an itu 🤣🧮
-bisa tercapai satu per satu.
+    <br><br>
 
-<br><br>
+    Semoga di umur yang baru ini
+    kamu selalu dikelilingi hal-hal baik,
+    orang-orang baik,
+    dan tentunya rezeki yang baik juga ✨
 
-Makasih sudah jadi sahabat
-yang selalu ada.
+    <br><br>
 
-<br><br>
+    Semoga semua cita-cita kamu,
+    termasuk yang berhubungan dengan
+    angka, rumus, dan segala macam
+    per-matematika-an itu 🤣🧮
+    bisa tercapai satu per satu.
 
-Tetap jadi kamu yang sekarang yaa.
-Jangan berubah jadi kalkulator 😭🤣
+    <br><br>
 
-<br><br>
+    Makasih sudah jadi sahabat
+    yang selalu ada.
 
-💜 HAPPY BIRTHDAY 💜
+    <br><br>
 
-</p>
+    Tetap jadi kamu yang sekarang yaa.
+
+    <br>
+
+    Jangan berubah jadi kalkulator 😭🤣
+
+    <br><br>
+
+    💜 HAPPY BIRTHDAY 💜
+
+  </p>
 
 </div>
 
 
 <script>
 
-/* =========================
+
+/* =================================
    SOAL MATEMATIKA
-========================= */
+================================= */
 
 const questions = [
 
-{
-question: "8 × 7 + 12 = ?",
-answer: 68
-},
+  {
+    question: "8 × 7 + 12 = ?",
+    answer: 68
+  },
 
-{
-question: "√144 + 6 × 3 = ?",
-answer: 30
-},
+  {
+    question: "√144 + 6 × 3 = ?",
+    answer: 30
+  },
 
-{
-question: "15² − 100 = ?",
-answer: 125
-}
+  {
+    question: "15² − 100 = ?",
+    answer: 125
+  }
 
 ];
+
 
 let currentQuestion = 0;
 
 
-/* =========================
+/* =================================
    CEK JAWABAN
-========================= */
+================================= */
 
 function checkAnswer() {
 
-const userAnswer =
-Number(document.getElementById("answer").value);
+  const input =
+    document.getElementById("answer");
 
-const message =
-document.getElementById("message");
+  const userAnswer =
+    Number(input.value);
 
-if (userAnswer === questions[currentQuestion].answer) {
+  const message =
+    document.getElementById("message");
 
-message.innerHTML =
-"🎉 BENARRR!! Otak matematika masih aman 😭💜";
 
-currentQuestion++;
+  if (input.value === "") {
 
-if (currentQuestion >= questions.length) {
+    message.innerHTML =
+      "Isi dulu jawabannyaaa 😭🧮";
 
-setTimeout(() => {
+    return;
 
-document.getElementById("game").style.display = "none";
+  }
 
-document.getElementById("surprise").style.display = "block";
 
-}, 1000);
+  if (
+    userAnswer ===
+    questions[currentQuestion].answer
+  ) {
 
-} else {
+    message.innerHTML =
+      "🎉 BENARRR!! Otak matematika masih aman 😭💜";
 
-setTimeout(() => {
 
-document.getElementById("question").innerHTML =
-questions[currentQuestion].question;
+    currentQuestion++;
 
-document.getElementById("progress").innerHTML =
-"Soal " + (currentQuestion + 1) + " dari 3";
 
-document.getElementById("answer").value = "";
+    if (
+      currentQuestion >=
+      questions.length
+    ) {
 
-message.innerHTML = "";
+      setTimeout(() => {
 
-}, 1000);
+        document.getElementById("game")
+          .style.display = "none";
+
+        document.getElementById("surprise")
+          .style.display = "block";
+
+      }, 1000);
+
+
+    } else {
+
+      setTimeout(() => {
+
+        document.getElementById("question")
+          .innerHTML =
+          questions[currentQuestion].question;
+
+
+        document.getElementById("progress")
+          .innerHTML =
+          "Soal " +
+          (currentQuestion + 1) +
+          " dari 3";
+
+
+        document.getElementById("answer")
+          .value = "";
+
+
+        message.innerHTML = "";
+
+      }, 1000);
+
+    }
+
+
+  } else {
+
+    message.innerHTML =
+      "❌ SALAHHH 😭 Anak matematika katanya?? WKWKWK 🤣 Coba lagi!";
+
+  }
 
 }
 
-} else {
 
-message.innerHTML =
-"❌ SALAHHH 😭 Anak matematika katanya?? WKWKWK 🤣 Coba lagi!";
-
-}
-
-}
-
-
-/* =========================
+/* =================================
    BUKA KEJUTAN
-========================= */
+================================= */
 
 function openGift() {
 
-document.getElementById("surprise").style.display = "none";
+  document.getElementById("surprise")
+    .style.display = "none";
 
-document.getElementById("birthday").style.display = "block";
+
+  document.getElementById("birthday")
+    .style.display = "block";
 
 }
 
 </script>
+
 
 </body>
 </html>
